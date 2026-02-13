@@ -239,6 +239,12 @@ h1 {
   max-width: 22ch;
 }
 
+.section-lead {
+  margin: 0 0 1rem;
+  max-width: 74ch;
+  color: var(--ink-soft);
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -252,7 +258,6 @@ h1 {
 .tab-panel p,
 .accordion-panel p,
 .cta-copy,
-.timeline-item p,
 li {
   color: var(--ink-soft);
 }
@@ -453,48 +458,163 @@ li {
   padding-top: 0.6rem;
 }
 
-.timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.workflow-flow {
+  margin-top: 1rem;
   display: grid;
-  gap: 0.85rem;
-  border-left: 2px solid rgba(15, 118, 110, 0.25);
-  margin-left: 0.55rem;
+  grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr) 72px minmax(0, 1fr) 72px minmax(0, 1fr);
+  gap: 0.72rem;
+  align-items: stretch;
 }
 
-.timeline-item {
-  background: rgba(255, 255, 255, 0.82);
+.flow-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(18, 35, 46, 0.1);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(17, 35, 46, 0.1);
-  padding: 0.88rem 1rem;
-  position: relative;
+  box-shadow: var(--shadow);
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.5rem;
 }
 
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -1.14rem;
-  top: 1.18rem;
-  width: 0.66rem;
-  height: 0.66rem;
-  border-radius: 999px;
-  background: var(--brand);
-}
-
-.timeline-item time {
-  font-size: 0.8rem;
+.flow-step-label {
+  margin: 0;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--brand-strong);
+}
+
+.flow-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10px;
+  background: rgba(15, 118, 110, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.flow-icon path {
+  stroke: #0f766e;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.flow-card p {
+  margin: 0;
+}
+
+.flow-connector {
+  align-self: center;
+}
+
+.flow-connector svg {
+  width: 100%;
+  height: auto;
+}
+
+.flow-connector path {
+  stroke: rgba(16, 89, 84, 0.65);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.workflow-rhythm {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rhythm-card {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(17, 35, 46, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 0.88rem 0.95rem;
+}
+
+.rhythm-card p {
+  margin: 0.5rem 0 0;
 }
 
 .timeline-actions {
   margin-top: 1rem;
 }
 
-.examples-shell {
-  margin-top: 0.1rem;
+.playbook-stack {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.playbook-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(18, 35, 46, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.playbook-flow {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1.15fr) 34px minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.playbook-step {
+  background: rgba(247, 251, 250, 0.95);
+  border: 1px solid rgba(17, 35, 46, 0.11);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+}
+
+.playbook-step h4 {
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-strong);
+}
+
+.playbook-step p {
+  margin: 0.45rem 0 0;
+}
+
+.playbook-step ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1rem;
+}
+
+.playbook-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playbook-connector svg {
+  width: 100%;
+  max-width: 34px;
+  height: auto;
+}
+
+.playbook-connector path {
+  stroke: rgba(14, 91, 86, 0.62);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 .cta-copy {
@@ -559,8 +679,30 @@ li {
   .card-grid,
   .toggle-grid,
   .tool-layout,
-  .diagram-wrap {
+  .diagram-wrap,
+  .workflow-rhythm {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workflow-flow,
+  .playbook-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-connector,
+  .playbook-connector {
+    justify-content: flex-start;
+    padding-left: 0.45rem;
+  }
+
+  .flow-connector svg {
+    max-width: 24px;
+    transform: rotate(90deg);
+  }
+
+  .playbook-connector svg {
+    max-width: 20px;
+    transform: rotate(90deg);
   }
 }
 
@@ -598,7 +740,8 @@ li {
   .card-grid,
   .toggle-grid,
   .tool-layout,
-  .diagram-wrap {
+  .diagram-wrap,
+  .workflow-rhythm {
     grid-template-columns: 1fr;
   }
 

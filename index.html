@@ -273,32 +273,102 @@
 
       <section id="workflow" class="container section reveal">
         <div class="section-head">
-          <p class="eyebrow">Timeline</p>
-          <h2>Workflow timeline for a normal day</h2>
+          <p class="eyebrow">Workflow</p>
+          <h2>Workflow path from request to delivered output</h2>
+        </div>
+        <p class="section-lead">
+          Every request follows one visual path so urgency, routing, validation, and delivery stay consistent.
+        </p>
+
+        <div class="workflow-flow" aria-label="Process flow">
+          <article class="flow-card">
+            <p class="flow-step-label">01</p>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path
+                  d="M12 3a6 6 0 0 0-6 6v2.2L4.4 14a1.5 1.5 0 0 0 1.3 2.2h12.6a1.5 1.5 0 0 0 1.3-2.2L18 11.2V9a6 6 0 0 0-6-6Zm0 18a2.7 2.7 0 0 0 2.5-1.7h-5A2.7 2.7 0 0 0 12 21Z"
+                ></path>
+              </svg>
+            </div>
+            <h3>Trigger capture</h3>
+            <p>A message, reminder, or task request is translated into one precise objective.</p>
+          </article>
+
+          <div class="flow-connector" aria-hidden="true">
+            <svg viewBox="0 0 80 24" role="presentation">
+              <path d="M2 12h70"></path>
+              <path d="M60 5 78 12 60 19"></path>
+            </svg>
+          </div>
+
+          <article class="flow-card">
+            <p class="flow-step-label">02</p>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path
+                  d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v2A2.5 2.5 0 0 1 18.5 11h-13A2.5 2.5 0 0 1 3 8.5v-2Zm0 9A2.5 2.5 0 0 1 5.5 13h13a2.5 2.5 0 1 1 0 5h-13A2.5 2.5 0 0 1 3 15.5Z"
+                ></path>
+              </svg>
+            </div>
+            <h3>Agent routing</h3>
+            <p>Kimi selects the lane: Codex for deep work, Llama for periodic checks, Kimi for safety-gated sends.</p>
+          </article>
+
+          <div class="flow-connector" aria-hidden="true">
+            <svg viewBox="0 0 80 24" role="presentation">
+              <path d="M2 12h70"></path>
+              <path d="M60 5 78 12 60 19"></path>
+            </svg>
+          </div>
+
+          <article class="flow-card">
+            <p class="flow-step-label">03</p>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M6.2 3.8h9l4 4v12.4A1.8 1.8 0 0 1 17.4 22H6.2a1.8 1.8 0 0 1-1.8-1.8V5.6a1.8 1.8 0 0 1 1.8-1.8Z"></path>
+                <path d="M14.4 5.7v3h3.1"></path>
+                <path d="m8 14 2.3 2.3L16 10.7"></path>
+              </svg>
+            </div>
+            <h3>Execution + QA</h3>
+            <p>The assigned agent executes and verifies quality gates before any completion status is reported.</p>
+          </article>
+
+          <div class="flow-connector" aria-hidden="true">
+            <svg viewBox="0 0 80 24" role="presentation">
+              <path d="M2 12h70"></path>
+              <path d="M60 5 78 12 60 19"></path>
+            </svg>
+          </div>
+
+          <article class="flow-card">
+            <p class="flow-step-label">04</p>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M12 2 2.8 7 12 12l9.2-5L12 2Z"></path>
+                <path d="m2.8 12.3 9.2 5 9.2-5"></path>
+                <path d="m2.8 17.5 9.2 4.5 9.2-4.5"></path>
+              </svg>
+            </div>
+            <h3>Delivery + memory</h3>
+            <p>Ship with clear receipts, then write durable context to daily logs and long-term memory.</p>
+          </article>
         </div>
 
-        <ol class="timeline">
-          <li class="timeline-item">
-            <time>07:30</time>
-            <h3>Heartbeat sweep</h3>
-            <p>Quick scan for urgent email/calendar changes. Quiet if no action is needed.</p>
-          </li>
-          <li class="timeline-item">
-            <time>09:00</time>
-            <h3>Main session kickoff</h3>
-            <p>Kimi loads context files, sets priority list, and prepares task routing.</p>
-          </li>
-          <li class="timeline-item">
-            <time>09:15-16:30</time>
-            <h3>Execution loops</h3>
-            <p>Codex handles implementation and validation; Kimi handles decisions and outbound communication.</p>
-          </li>
-          <li class="timeline-item">
-            <time>18:00</time>
-            <h3>Cron consolidation</h3>
-            <p>Daily memory is captured, long-term memory is curated, and loose ends are surfaced.</p>
-          </li>
-        </ol>
+        <div class="workflow-rhythm">
+          <article class="rhythm-card">
+            <h3>Morning signal check</h3>
+            <p>Heartbeat scans inbox and calendar, escalating only when priority shifts.</p>
+          </article>
+          <article class="rhythm-card">
+            <h3>Workday ship loop</h3>
+            <p>Routing, execution, and validation repeat until every open task reaches done or blocked.</p>
+          </article>
+          <article class="rhythm-card">
+            <h3>Evening state sync</h3>
+            <p>Decisions are captured, next actions are queued, and the next session starts with context.</p>
+          </article>
+        </div>
 
         <div class="timeline-actions">
           <button class="btn btn-secondary" data-action="scroll" data-target="#tools">Jump to cron + heartbeat controls</button>
@@ -389,7 +459,7 @@
           </article>
           <article class="tool-card">
             <h3>Sub-agents</h3>
-            <p>Som routinely spawns focused agents for coding, synthesis, and data-heavy workflows.</p>
+            <p>Use this lane when the task needs deep implementation, high context, or long-running synthesis.</p>
             <button
               class="toggle-trigger"
               aria-expanded="false"
@@ -413,42 +483,142 @@
       <section id="examples" class="container section reveal">
         <div class="section-head">
           <p class="eyebrow">Practical examples</p>
-          <h2>Real project outcomes Som already shipped</h2>
+          <h2>Trigger-to-Outcome Playbooks</h2>
         </div>
+        <p class="section-lead">
+          Three scenarios below show the full chain: trigger, agent routing, execution actions, and the shipped output.
+        </p>
 
-        <div class="accordion-shell examples-shell">
-          <article class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-445" id="acc-445-btn">
-              445 E 109th rehab package
-            </button>
-            <div class="accordion-panel" id="acc-445" role="region" aria-labelledby="acc-445-btn" hidden>
-              <p>
-                Generated budget-constrained SOW revisions, embedded photo evidence, and final delivery docs under a hard
-                all-in cap.
-              </p>
+        <div class="playbook-stack">
+          <article class="playbook-card">
+            <h3>Scenario 1: Same-day lender document request</h3>
+            <div class="playbook-flow">
+              <div class="playbook-step">
+                <h4>Trigger</h4>
+                <p>A lender asks for updated rent roll and insurance proof before a noon cutoff.</p>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Agent routing</h4>
+                <p>Kimi handles priority and approval, then routes data assembly and formatting to Codex.</p>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Collect current lease, ledger, and policy files from property folders</li>
+                  <li>Map every value to lender-required fields and highlight missing data</li>
+                  <li>Prepare a send-ready summary draft and attach validated artifacts</li>
+                </ul>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Output</h4>
+                <p>Decision-ready lender packet plus a concise reply draft for immediate approval and send.</p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-rudyard" id="acc-rudyard-btn">
-              949 Rudyard due diligence review
-            </button>
-            <div class="accordion-panel" id="acc-rudyard" role="region" aria-labelledby="acc-rudyard-btn" hidden>
-              <p>
-                Extracted basement photo set, organized evidence, and delivered a decision-ready summary for quick go/no-go.
-              </p>
+          <article class="playbook-card">
+            <h3>Scenario 2: Rehab scope must hit a hard budget cap</h3>
+            <div class="playbook-flow">
+              <div class="playbook-step">
+                <h4>Trigger</h4>
+                <p>A contractor estimate lands above cap and needs same-day value engineering.</p>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Agent routing</h4>
+                <p>Kimi sets tradeoff rules; Codex rewrites line items and verifies totals against cap.</p>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Prioritize by safety, rentability, and return-on-cost impact</li>
+                  <li>Rebalance hard cost and contingency to satisfy budget guardrails</li>
+                  <li>Cross-check photo evidence against each revised scope line</li>
+                </ul>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Output</h4>
+                <p>Final SOW + summary package that is contractor-ready and confirmed within the approved ceiling.</p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-jobseek" id="acc-jobseek-btn">
-              JobSeek automation build
-            </button>
-            <div class="accordion-panel" id="acc-jobseek" role="region" aria-labelledby="acc-jobseek-btn" hidden>
-              <p>
-                Shipped an AI-driven job pipeline with command-line flows for fetching, tailoring resumes, and tracking
-                application funnel metrics.
-              </p>
+          <article class="playbook-card">
+            <h3>Scenario 3: New automation feature request in a live repo</h3>
+            <div class="playbook-flow">
+              <div class="playbook-step">
+                <h4>Trigger</h4>
+                <p>Som requests a feature touching UI, scripts, docs, and deployment flow.</p>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Agent routing</h4>
+                <p>Codex runs implementation and validation loops while Kimi controls scope and outbound safety.</p>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Edit target files with minimal diffs and preserve existing interaction hooks</li>
+                  <li>Run lint/build/test and fix regressions before reporting complete</li>
+                  <li>Publish with commit hash, validation notes, and live verification</li>
+                </ul>
+              </div>
+              <div class="playbook-connector" aria-hidden="true">
+                <svg viewBox="0 0 36 14" role="presentation">
+                  <path d="M1 7h30"></path>
+                  <path d="m26 3 9 4-9 4"></path>
+                </svg>
+              </div>
+              <div class="playbook-step">
+                <h4>Output</h4>
+                <p>Production-ready release artifacts with reproducible checks and clear handoff details.</p>
+              </div>
             </div>
           </article>
         </div>
@@ -476,7 +646,7 @@ Tim, this setup gives you one orchestrator, one heavy executor, and one low-cost
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>Built for Tim by Som + Omni. Build stamp: <span id="build-stamp">2026-02-13T01:10:39.433Z</span></p>
+        <p>Built for Tim by Som + Omni. Build stamp: <span id="build-stamp">2026-02-13T01:38:41.533Z</span></p>
         <a href="#top">Top</a>
       </div>
     </footer>
