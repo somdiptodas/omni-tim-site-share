@@ -2,6 +2,7 @@ const menuToggle = document.querySelector("#menu-toggle");
 const nav = document.querySelector("#primary-nav");
 const copyStatus = document.querySelector("#copy-status");
 const buildStamp = document.querySelector("#build-stamp");
+const mobileNavQuery = window.matchMedia("(max-width: 768px)");
 const routeCopy = {
   coding: "Routed to Codex for implementation, with Kimi supervising priorities and reporting.",
   ops: "Routed to Llama heartbeat or cron checks first, with Kimi escalating only when needed.",
@@ -23,6 +24,18 @@ if (menuToggle && nav) {
     menuToggle.setAttribute("aria-expanded", String(!expanded));
     nav.classList.toggle("is-open", !expanded);
   });
+
+  window.addEventListener("resize", () => {
+    if (!mobileNavQuery.matches) {
+      closeMobileNav();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMobileNav();
+    }
+  });
 }
 
 const scrollToTarget = (selector) => {
@@ -36,6 +49,15 @@ const scrollToTarget = (selector) => {
 };
 
 document.addEventListener("click", async (event) => {
+  if (menuToggle && nav && nav.classList.contains("is-open")) {
+    const insideNav = event.target.closest("#primary-nav");
+    const onToggle = event.target.closest("#menu-toggle");
+
+    if (!insideNav && !onToggle) {
+      closeMobileNav();
+    }
+  }
+
   const actionEl = event.target.closest("[data-action]");
   const anchorEl = event.target.closest('a[href^="#"]');
 

@@ -12,6 +12,7 @@
   --radius-lg: 14px;
   --radius-sm: 10px;
   --max: 1120px;
+  --tap-min: 44px;
 }
 
 * {
@@ -29,6 +30,7 @@ body {
   color: var(--ink);
   background: radial-gradient(circle at 15% 20%, #edf6ef 0%, #f4f4ef 32%, #eef4f4 100%);
   line-height: 1.5;
+  overflow-x: clip;
 }
 
 main {
@@ -103,6 +105,9 @@ main {
   font-size: 0.95rem;
   padding: 0.5rem 0.7rem;
   border-radius: 999px;
+  min-height: var(--tap-min);
+  display: inline-flex;
+  align-items: center;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -119,7 +124,10 @@ main {
   color: var(--ink);
   border-radius: 999px;
   padding: 0.42rem 0.8rem;
+  min-height: var(--tap-min);
   font: inherit;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .hero {
@@ -171,6 +179,8 @@ h1 {
   border-radius: 999px;
   font: inherit;
   font-weight: 600;
+  line-height: 1.25;
+  min-height: var(--tap-min);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -291,6 +301,7 @@ li {
   background: transparent;
   border-radius: 999px;
   padding: 0.48rem 0.9rem;
+  min-height: var(--tap-min);
   cursor: pointer;
 }
 
@@ -336,6 +347,8 @@ li {
   font: inherit;
   font-weight: 600;
   padding: 0.45rem 0.82rem;
+  min-height: var(--tap-min);
+  line-height: 1.25;
   cursor: pointer;
 }
 
@@ -363,6 +376,9 @@ li {
   text-align: left;
   font: inherit;
   font-weight: 600;
+  min-height: var(--tap-min);
+  padding: 0.15rem 0;
+  line-height: 1.3;
   cursor: pointer;
 }
 
@@ -447,6 +463,8 @@ li {
   color: var(--ink);
   border-radius: 999px;
   padding: 0.38rem 0.75rem;
+  min-height: var(--tap-min);
+  line-height: 1.25;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -651,6 +669,11 @@ li {
   color: var(--ink);
 }
 
+p,
+li {
+  overflow-wrap: anywhere;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -691,34 +714,47 @@ li {
 
   .flow-connector,
   .playbook-connector {
-    justify-content: flex-start;
-    padding-left: 0.45rem;
-  }
-
-  .flow-connector svg {
-    max-width: 24px;
-    transform: rotate(90deg);
-  }
-
-  .playbook-connector svg {
-    max-width: 20px;
-    transform: rotate(90deg);
+    display: none;
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 768px) {
+  .container {
+    width: min(var(--max), calc(100% - 1.25rem));
+  }
+
+  .bg-orb {
+    opacity: 0.22;
+  }
+
+  .header-inner {
+    min-height: 66px;
+    position: relative;
+  }
+
+  .brand {
+    font-size: 0.98rem;
+  }
+
   .menu-toggle {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.48rem 0.9rem;
+    margin-left: auto;
   }
 
   .primary-nav {
     position: absolute;
-    top: 72px;
-    right: 0.8rem;
-    left: 0.8rem;
+    top: calc(100% + 0.45rem);
+    right: 0;
+    left: 0;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0.8rem;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.65rem;
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(17, 35, 46, 0.12);
     border-radius: var(--radius-lg);
@@ -729,11 +765,37 @@ li {
   .primary-nav.is-open {
     display: flex;
   }
-}
 
-@media (max-width: 700px) {
+  .nav-link {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.62rem 0.84rem;
+  }
+
   .hero {
-    padding-top: 3rem;
+    padding-top: 2.45rem;
+    padding-bottom: 1.35rem;
+  }
+
+  h1 {
+    font-size: clamp(1.92rem, 8.6vw, 2.52rem);
+    max-width: 13ch;
+  }
+
+  .hero-copy {
+    margin-top: 0.85rem;
+    font-size: 1rem;
+  }
+
+  .hero-actions,
+  .route-buttons {
+    gap: 0.6rem;
+  }
+
+  .hero-actions .btn,
+  .route-buttons .route-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero-stats,
@@ -743,15 +805,127 @@ li {
   .diagram-wrap,
   .workflow-rhythm {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .section {
+    margin-top: 2.35rem;
+  }
+
+  .section-head h2 {
+    max-width: 100%;
+    font-size: clamp(1.38rem, 6.4vw, 1.95rem);
   }
 
   .tab-list {
-    border-radius: 16px;
+    border-radius: 14px;
     width: 100%;
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.4rem;
   }
 
   .tab-button {
     width: 100%;
     text-align: left;
+    border-radius: 10px;
+    padding: 0.62rem 0.78rem;
+  }
+
+  .route-sim,
+  .playbook-card,
+  .flow-card {
+    padding: 0.9rem;
+  }
+
+  .workflow-flow,
+  .playbook-flow {
+    gap: 0.7rem;
+  }
+
+  .flow-icon {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .flow-icon svg {
+    width: 1.08rem;
+    height: 1.08rem;
+  }
+
+  .timeline-actions .btn {
+    width: 100%;
+  }
+
+  .footer-inner {
+    min-height: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.45rem;
+    padding-block: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --tap-min: 46px;
+  }
+
+  .container {
+    width: min(var(--max), calc(100% - 1rem));
+  }
+
+  .header-inner {
+    min-height: 62px;
+  }
+
+  .menu-toggle {
+    font-size: 0.94rem;
+    padding-inline: 0.78rem;
+  }
+
+  h1 {
+    margin-top: 0.55rem;
+    font-size: clamp(1.68rem, 10.4vw, 2.12rem);
+  }
+
+  .hero-copy,
+  .section-lead,
+  .cta-copy,
+  .playbook-step p,
+  .flow-card p,
+  .route-output {
+    font-size: 0.96rem;
+  }
+
+  .metric-card,
+  .info-card,
+  .role-card,
+  .tool-card,
+  .toggle-card,
+  .tab-panel,
+  .accordion-item,
+  .playbook-card,
+  .flow-card {
+    padding: 0.8rem;
+  }
+
+  .playbook-step {
+    padding: 0.68rem;
+  }
+
+  .playbook-step h4,
+  .flow-step-label {
+    letter-spacing: 0.06em;
+  }
+
+  .btn,
+  .tab-button,
+  .route-button,
+  .toggle-trigger,
+  .accordion-trigger,
+  .nav-link {
+    font-size: 0.95rem;
   }
 }
