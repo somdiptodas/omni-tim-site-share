@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Som + Omni Field Guide for Tim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top">OpenClaw Guide</a>
+        <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
+          Menu
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Main">
+          <a class="nav-link" href="#overview">Overview</a>
+          <a class="nav-link" href="#features">Feature Demos</a>
+          <a class="nav-link" href="#architecture">Architecture</a>
+          <a class="nav-link" href="#workflow">Workflow</a>
+          <a class="nav-link" href="#roles">Roles</a>
+          <a class="nav-link" href="#tools">Tools</a>
+          <a class="nav-link" href="#examples">Examples</a>
+          <a class="nav-link" href="#cta">Next Step</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container reveal" id="hero">
+        <p class="eyebrow">How Som runs Omni day to day</p>
+        <h1>Hey Tim, this is how Som uses Omni</h1>
+        <p class="hero-copy">
+          Omni is a practical operating system, not a demo. Som uses it to turn scattered work into repeatable execution,
+          with Kimi orchestrating, Codex shipping heavy work, and Llama handling low-cost heartbeat checks.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-action="scroll" data-target="#workflow">See the daily workflow</button>
+          <button class="btn btn-secondary" data-action="scroll" data-target="#architecture">View architecture map</button>
+        </div>
+        <div class="hero-stats">
+          <article class="metric-card">
+            <h2>3-agent stack</h2>
+            <p>Kimi (brain), Codex (muscle), Llama (heartbeat + hygiene).</p>
+          </article>
+          <article class="metric-card">
+            <h2>2 operating loops</h2>
+            <p>Real-time session loop + background cron and heartbeat loop.</p>
+          </article>
+          <article class="metric-card">
+            <h2>1 rule</h2>
+            <p>Ship complete outputs with validation and clear status reporting.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="overview" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">At a glance</p>
+          <h2>What this setup is optimized for</h2>
+        </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Speed with guardrails</h3>
+            <p>Fast execution, but with pre-send QA gates and explicit completion receipts.</p>
+          </article>
+          <article class="info-card">
+            <h3>Parallel heavy lifting</h3>
+            <p>Codex handles coding, file processing, and synthesis while Kimi keeps context and priorities straight.</p>
+          </article>
+          <article class="info-card">
+            <h3>Quiet autonomy</h3>
+            <p>Heartbeat and cron checks catch urgent items without spamming Som all day.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="features" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Feature demos</p>
+          <h2>Interactive demos of Som's routine</h2>
+        </div>
+
+        <div class="tab-shell">
+          <div class="tab-list" role="tablist" aria-label="Routine tabs">
+            <button class="tab-button" role="tab" aria-selected="true" data-tab="morning" id="tab-morning-btn">
+              Morning triage
+            </button>
+            <button class="tab-button" role="tab" aria-selected="false" data-tab="workday" id="tab-workday-btn">
+              Workday execution
+            </button>
+            <button class="tab-button" role="tab" aria-selected="false" data-tab="evening" id="tab-evening-btn">
+              Evening cleanup
+            </button>
+          </div>
+
+          <article class="tab-panel" role="tabpanel" data-tab-panel="morning" aria-labelledby="tab-morning-btn">
+            <h3>Morning triage</h3>
+            <p>Heartbeat checks pull urgent email/calendar signals, then Kimi prioritizes only what needs attention now.</p>
+            <ul>
+              <li>Read alerts and detect urgency windows</li>
+              <li>Draft concise action plan for Som</li>
+              <li>Spawn Codex only for heavier tasks</li>
+            </ul>
+          </article>
+
+          <article class="tab-panel is-hidden" role="tabpanel" data-tab-panel="workday" aria-labelledby="tab-workday-btn">
+            <h3>Workday execution</h3>
+            <p>Codex runs production-grade implementation and validation while Kimi manages external communication safely.</p>
+            <ul>
+              <li>Multi-file coding and documentation updates</li>
+              <li>Lint/build/test before reporting done</li>
+              <li>Status reports with blockers and next action</li>
+            </ul>
+          </article>
+
+          <article class="tab-panel is-hidden" role="tabpanel" data-tab-panel="evening" aria-labelledby="tab-evening-btn">
+            <h3>Evening cleanup</h3>
+            <p>State gets persisted: daily memory logs are condensed into long-term memory when it matters.</p>
+            <ul>
+              <li>Capture durable decisions and preferences</li>
+              <li>Close loops with completion receipts</li>
+              <li>Prepare next-day heartbeat checklist</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="accordion-shell">
+          <article class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-spawn" id="acc-spawn-btn">
+              When Som spawns sub-agents
+            </button>
+            <div class="accordion-panel" id="acc-spawn" role="region" aria-labelledby="acc-spawn-btn" hidden>
+              <p>
+                Any coding task, multi-file analysis, or 10+ turn effort gets delegated. Kimi stays focused on orchestration,
+                while Codex executes deeply and reports back with validation.
+              </p>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-safety" id="acc-safety-btn">
+              How external safety is enforced
+            </button>
+            <div class="accordion-panel" id="acc-safety" role="region" aria-labelledby="acc-safety-btn" hidden>
+              <p>
+                Read/search/internal edits are free. Anything that sends data outside the machine is gated and checked,
+                especially in group contexts.
+              </p>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-quality" id="acc-quality-btn">
+              Quality control before delivery
+            </button>
+            <div class="accordion-panel" id="acc-quality" role="region" aria-labelledby="acc-quality-btn" hidden>
+              <p>
+                Pre-send QA validates budget caps, mandatory sections, banned phrasing, and file naming before any user-facing
+                send action.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <article class="route-sim">
+          <h3>Routing simulator</h3>
+          <p>Pick a common request and see where Som routes it inside Omni.</p>
+          <div class="route-buttons">
+            <button
+              class="route-button is-active"
+              data-action="set-route"
+              data-route="coding"
+              data-target="#route-output"
+            >
+              Build a new feature
+            </button>
+            <button class="route-button" data-action="set-route" data-route="ops" data-target="#route-output">
+              Routine checks and reminders
+            </button>
+            <button class="route-button" data-action="set-route" data-route="outbound" data-target="#route-output">
+              Message or external send
+            </button>
+          </div>
+          <p class="route-output" id="route-output">
+            Routed to Codex for implementation, with Kimi supervising priorities and reporting.
+          </p>
+        </article>
+      </section>
+
+      <section id="architecture" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Architecture diagram</p>
+          <h2>Kimi, Codex, and Llama in one operating graph</h2>
+        </div>
+
+        <div class="diagram-wrap">
+          <div class="diagram-node node-kimi">
+            <h3>Kimi</h3>
+            <p>Brain and orchestrator</p>
+          </div>
+          <div class="diagram-node node-codex">
+            <h3>Codex</h3>
+            <p>Execution engine for heavy tasks</p>
+          </div>
+          <div class="diagram-node node-llama">
+            <h3>Llama</h3>
+            <p>Low-cost heartbeat + hygiene checks</p>
+          </div>
+          <div class="diagram-arrow arrow-kc" aria-hidden="true">Kimi -> Codex</div>
+          <div class="diagram-arrow arrow-kl" aria-hidden="true">Kimi -> Llama</div>
+          <div class="diagram-arrow arrow-ck" aria-hidden="true">Codex -> Kimi report</div>
+          <div class="diagram-arrow arrow-lk" aria-hidden="true">Llama -> Kimi pulse</div>
+        </div>
+
+        <div class="toggle-grid">
+          <article class="toggle-card">
+            <h3>Orchestration internals</h3>
+            <button
+              class="toggle-trigger"
+              aria-expanded="false"
+              data-target="#arch-kimi-details"
+              data-show-label="Show details"
+              data-hide-label="Hide details"
+            >
+              Show details
+            </button>
+            <div class="toggle-panel" id="arch-kimi-details" hidden>
+              <p>Kimi owns session context, prioritization, and user-safe communication boundaries.</p>
+            </div>
+          </article>
+          <article class="toggle-card">
+            <h3>Execution internals</h3>
+            <button
+              class="toggle-trigger"
+              aria-expanded="false"
+              data-target="#arch-codex-details"
+              data-show-label="Show details"
+              data-hide-label="Hide details"
+            >
+              Show details
+            </button>
+            <div class="toggle-panel" id="arch-codex-details" hidden>
+              <p>Codex does coding, lint/build/test loops, file synthesis, and high-effort analysis.</p>
+            </div>
+          </article>
+          <article class="toggle-card">
+            <h3>Heartbeat internals</h3>
+            <button
+              class="toggle-trigger"
+              aria-expanded="false"
+              data-target="#arch-llama-details"
+              data-show-label="Show details"
+              data-hide-label="Hide details"
+            >
+              Show details
+            </button>
+            <div class="toggle-panel" id="arch-llama-details" hidden>
+              <p>Llama handles periodic checks and quiet maintenance without burning main-session tokens.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="workflow" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Timeline</p>
+          <h2>Workflow timeline for a normal day</h2>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item">
+            <time>07:30</time>
+            <h3>Heartbeat sweep</h3>
+            <p>Quick scan for urgent email/calendar changes. Quiet if no action is needed.</p>
+          </li>
+          <li class="timeline-item">
+            <time>09:00</time>
+            <h3>Main session kickoff</h3>
+            <p>Kimi loads context files, sets priority list, and prepares task routing.</p>
+          </li>
+          <li class="timeline-item">
+            <time>09:15-16:30</time>
+            <h3>Execution loops</h3>
+            <p>Codex handles implementation and validation; Kimi handles decisions and outbound communication.</p>
+          </li>
+          <li class="timeline-item">
+            <time>18:00</time>
+            <h3>Cron consolidation</h3>
+            <p>Daily memory is captured, long-term memory is curated, and loose ends are surfaced.</p>
+          </li>
+        </ol>
+
+        <div class="timeline-actions">
+          <button class="btn btn-secondary" data-action="scroll" data-target="#tools">Jump to cron + heartbeat controls</button>
+        </div>
+      </section>
+
+      <section id="roles" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Roles</p>
+          <h2>Who does what in the stack</h2>
+        </div>
+        <div class="card-grid">
+          <article class="role-card">
+            <h3>Kimi</h3>
+            <p>Maintains context, routes work, and guards external actions.</p>
+            <ul>
+              <li>Loads SOUL/USER/memory state each session</li>
+              <li>Coordinates multiple agents</li>
+              <li>Keeps response quality and tone aligned</li>
+            </ul>
+          </article>
+          <article class="role-card">
+            <h3>Codex</h3>
+            <p>Builds and validates concrete outputs fast.</p>
+            <ul>
+              <li>Coding, debugging, and project setup</li>
+              <li>Parallel file analysis and refactors</li>
+              <li>Reports validation and blockers clearly</li>
+            </ul>
+          </article>
+          <article class="role-card">
+            <h3>Llama</h3>
+            <p>Runs low-cost routine checks and background hygiene.</p>
+            <ul>
+              <li>Heartbeat polls and reminders</li>
+              <li>Simple recurring checks</li>
+              <li>Keeps main session signal focused</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="tools" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Tools and automation</p>
+          <h2>Cron, heartbeat, and sub-agent control plane</h2>
+        </div>
+        <div class="tool-layout">
+          <article class="tool-card">
+            <h3>Cron jobs</h3>
+            <p>Use cron for precise time-based tasks: reminders, exact schedules, and isolated one-shot tasks.</p>
+            <button
+              class="toggle-trigger"
+              aria-expanded="false"
+              data-target="#cron-sheet"
+              data-show-label="Show cron cheat sheet"
+              data-hide-label="Hide cron cheat sheet"
+            >
+              Show cron cheat sheet
+            </button>
+            <div class="toggle-panel" id="cron-sheet" hidden>
+              <ul>
+                <li>Exact schedules: weekly 09:00 reports</li>
+                <li>One-shot reminders: follow up in 20 minutes</li>
+                <li>Isolated jobs with separate model settings</li>
+              </ul>
+            </div>
+          </article>
+          <article class="tool-card">
+            <h3>Heartbeat checks</h3>
+            <p>Use heartbeat for grouped periodic checks where slight timing drift is acceptable.</p>
+            <button
+              class="toggle-trigger"
+              aria-expanded="false"
+              data-target="#heartbeat-sheet"
+              data-show-label="Show heartbeat playbook"
+              data-hide-label="Hide heartbeat playbook"
+            >
+              Show heartbeat playbook
+            </button>
+            <div class="toggle-panel" id="heartbeat-sheet" hidden>
+              <ul>
+                <li>Batch email + calendar + mentions in one pass</li>
+                <li>Stay quiet overnight unless urgent</li>
+                <li>Ping only when there is fresh value</li>
+              </ul>
+            </div>
+          </article>
+          <article class="tool-card">
+            <h3>Sub-agents</h3>
+            <p>Som routinely spawns focused agents for coding, synthesis, and data-heavy workflows.</p>
+            <button
+              class="toggle-trigger"
+              aria-expanded="false"
+              data-target="#sub-agent-sheet"
+              data-show-label="Show spawn rules"
+              data-hide-label="Hide spawn rules"
+            >
+              Show spawn rules
+            </button>
+            <div class="toggle-panel" id="sub-agent-sheet" hidden>
+              <ul>
+                <li>Always spawn for coding tasks</li>
+                <li>Auto-spawn for multi-file or long-horizon tasks</li>
+                <li>Return completion reports with validation every time</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="examples" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Practical examples</p>
+          <h2>Real project outcomes Som already shipped</h2>
+        </div>
+
+        <div class="accordion-shell examples-shell">
+          <article class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-445" id="acc-445-btn">
+              445 E 109th rehab package
+            </button>
+            <div class="accordion-panel" id="acc-445" role="region" aria-labelledby="acc-445-btn" hidden>
+              <p>
+                Generated budget-constrained SOW revisions, embedded photo evidence, and final delivery docs under a hard
+                all-in cap.
+              </p>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-rudyard" id="acc-rudyard-btn">
+              949 Rudyard due diligence review
+            </button>
+            <div class="accordion-panel" id="acc-rudyard" role="region" aria-labelledby="acc-rudyard-btn" hidden>
+              <p>
+                Extracted basement photo set, organized evidence, and delivered a decision-ready summary for quick go/no-go.
+              </p>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-jobseek" id="acc-jobseek-btn">
+              JobSeek automation build
+            </button>
+            <div class="accordion-panel" id="acc-jobseek" role="region" aria-labelledby="acc-jobseek-btn" hidden>
+              <p>
+                Shipped an AI-driven job pipeline with command-line flows for fetching, tailoring resumes, and tracking
+                application funnel metrics.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="cta" class="container section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Next move</p>
+          <h2>Ready to put this in your own workflow?</h2>
+        </div>
+        <p class="cta-copy">
+          If Tim wants, Som can share a starter operating checklist, default heartbeat template, and the minimum viable
+          architecture to get productive in under one afternoon.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-action="copy-pitch" data-target="#pitch-text">Copy 60-second pitch</button>
+          <a class="btn btn-secondary" href="#top">Back to top</a>
+        </div>
+        <textarea id="pitch-text" class="visually-hidden" aria-hidden="true">
+Tim, this setup gives you one orchestrator, one heavy executor, and one low-cost heartbeat worker so your day stays focused and outputs still ship with validation.
+        </textarea>
+        <p id="copy-status" class="copy-status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Built for Tim by Som + Omni. Build stamp: <span id="build-stamp">2026-02-13T01:10:39.433Z</span></p>
+        <a href="#top">Top</a>
+      </div>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
